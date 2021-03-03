@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+ 
+<body>
+
+<h2>arithemtic</h2>
+
+<form>
+    <label for="first_value">Enter a number</label>
+    <input type="number" id="first_value" name="first_value" value="10"> <br>
+
+    <label for="second_value">Enter a number </label>
+    <input type="number" id="second_value" name="second_value" value="2"> <br>
+    <input type="button" onclick="permutations()" value="Compute">
+</form>
+<p id="result">This text will be replaced </p>
+<script> 
+
+function permutations(){
+    first = document.getElementById("first_value").value;
+    second = document.getElementById("second_value").value;
+    product=1;
+    for (let i = first; i >= first - second + 1; i--) {
+                product *= i;
+            }
+    
+    
+    out = document.getElementById("result")
+    out.innerHTML = first_value+" permute "+second_value+"is"+ product;  
+}
+
+
+</script>
+
+</body>
+</html> 
