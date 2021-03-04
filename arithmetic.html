@@ -1,73 +1,89 @@
 <!DOCTYPE html>
 <html>
- 
+ <head>
+
+     <title>
+        permutation
+    </title>
+</head>
 <body>
 
-<h2>arithemtic</h2>
+<h2>sathya mamidala Computes</h2>
 
 <form>
-    <label for="first_value">Enter a number</label>
-    <input type="number" id="first_value" name="first_value" value="10"> <br>
+    <label for="form1_firstvalue">Enter a number </label>
+    <input type ="number" id="form1_firstvalue" name="form1_firstvalue" value=10> <br>
 
-    <label for="second_value">Enter a number </label>
-    <input type="number" id="second_value" name="second_value" value="2"> <br>
+    <label for="form1_secondvalue">Enter a number </label>
+    <input type ="number" id="form1_secondvalue" name="form1_secondvalue" value=2 > <br>
+
     <input type="button" onclick="permutations()" value="Compute">
 </form>
-<p id="result1">This text will be replaced </p>
+
+<p id="result">First permute Second is product  </p>
 <form>
-    <input type="radio" id="radio_plus" name="radio" value="plus" onclick="processRadio()">
-        <label for="radio_plus">+</label></br>  
-    <input type="radio" id="radio_minus" name="radio" value="minus" onclick="processRadio()"> 
-        <label for="radio_minus">-</label></br>   
-    <input type="radio" id="radio_times" name="radio" value="times" onclick="processRadio()">        
-        <label for="radio_times">*</label></br>
-    <input type="radio" id="radio_divide" name="radio" value="divide" onclick="processRadio()">        
-        <label for="radio_divide">/</label></br>
+<input type="radio" id="rg1_plus" name="operation"  onclick="processRadio()" value="plus"> <label for="rg1_plus">+</label>
+</br>    
+<input type="radio" id="rg1_minus" name="operation" onclick="processRadio()" value="minus"> <label for="rg1_minus">-</label>
+</br>
+<input type="radio" id="rg1_times" name="operation" onclick="processRadio()" value="times"> <label for="rg1_times">*</label>
+</br>
+<input type="radio" id="rg1_divide" name="operation" onclick="processRadio()" value="divide"> <label for="rg1_divide">/</label>
+</br>    
+
 </form>
-<p id="result2"> </p>
+
+
+
+<p id="arithmetic">The text will be displayed on the screen by checking result </p>
+
 <script> 
 
 function permutations(){
-    first = document.getElementById("first_value").value;
-    second = document.getElementById("second_value").value;
-    product=1;
-    for (let i = first; i >= first - second + 1; i--) {
-                product *= i;
-            }
+    var zx = document.getElementById("form1_firstvalue").value;
+        var as = document.getElementById("form1_secondvalue").value;
+        var product = 1;
+        var q = zx;
+        out = document.getElementById("result")
+        for (var i = zx-1; i > 0; i--) {
+            zx = zx * i;
+        }
+        var op = q - as;
+        for (j = op-1 ; j > 0; j--) {
+            op = op * j;
+        }
+        product = zx / op;
+        console.log(product);
+        out.innerHTML = q + " permute " + as + " should be " + product;
     
-    
-    out = document.getElementById("result1")
-    out.innerHTML = first_value+" permute "+second_value+"is"+ product;  
 }
-
-
-    function processRadio()
-    {
-        first = parseInt(document.getElementById("first_value").value);
-        second = parseInt(document.getElementById("second_value").value);
-        out = document.getElementById("result2")
-        if (document.getElementById("radio_plus").checked){
-
-        out.innerHTML = (first + second);
-    } 
-        else if (document.getElementById("radio_minus").checked) {
-
-        out.innerHTML = first - second;
-
-    } 
-        else if (document.getElementById("radio_times").checked) {
-
-        out.innerHTML = first* second;
-
-    } 
-         else {
-
-        out.innerHTML = first / second;
-
-}
-    }
-
 </script>
+
+
+<script>
+    function processRadio() {
+        let first = document.getElementById("form1_firstvalue").value;
+        let second = document.getElementById("form1_secondvalue").value;
+        plus = document.getElementById("rg1_plus").checked
+        minus = document.getElementById("rg1_minus").checked
+        times = document.getElementById("rg1_times").checked
+        divide = document.getElementById("rg1_divide").checked
+       
+        if (plus) {
+            document.getElementById("arithmetic").innerHTML = (Number)(first) + (Number)(second)
+        }
+        if (minus) {
+            document.getElementById("arithmetic").innerHTML = first - second
+        }
+        if (times) {
+            document.getElementById("arithmetic").innerHTML = first * second
+        }
+        if (divide) {
+            document.getElementById("arithmetic").innerHTML = first / second
+        }
+    }
+</script>
+
 
 </body>
 </html> 

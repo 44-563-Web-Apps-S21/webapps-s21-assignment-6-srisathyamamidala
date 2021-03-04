@@ -17,22 +17,20 @@
     <input type="button" onclick=startbear()" value="Start a bear">  
 </form>
 
+
 <p id="result3">text</p>
+<form>
+    
+    <label for="property">Enter a property </label>
+    <input type="text" id="form1_property" name="form1_property" value=color> <br>
+
+    <label for="value">Enter a value </label>
+    <input type="text" id="form1_value" name="form1_value"> <br>
+    <input type="button" onclick="updatebear()" value="Update the bear">
+</form>
+<p id="result4">text</p>
 <script> 
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
 function startbear() {
             my_bear = {};
     if(document.getElementById("hat").checked){
@@ -56,6 +54,13 @@ function startbear() {
     out.innerHTML=my_bear
     
     
+}
+function updatebear(){
+    property = document.getElementById("property").value
+    value = document.getElementById("value").value
+    my_bear[property] = value
+    out = document.getElementById("result4")
+    out.innerHTML = my_bear
 }
 </script>
 
