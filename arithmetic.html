@@ -13,7 +13,18 @@
     <input type="number" id="second_value" name="second_value" value="2"> <br>
     <input type="button" onclick="permutations()" value="Compute">
 </form>
-<p id="result">This text will be replaced </p>
+<p id="result1">This text will be replaced </p>
+<form>
+    <input type="radio" id="rg1_plus" name="radio" value="plus" onclick="processRadio()">
+        <label for="rg1_plus">+</label></br>  
+    <input type="radio" id="rg1_minus" name="radio" value="minus" onclick="processRadio()"> 
+        <label for="rg1_minus">-</label></br>   
+    <input type="radio" id="rg1_times" name="radio" value="times" onclick="processRadio()">        
+        <label for="rg1_times">*</label></br>
+    <input type="radio" id="rg1_divide" name="radio" value="divide" onclick="processRadio()">        
+        <label for="rg1_divide">/</label></br>
+</form>
+<p id="result2"> </p>
 <script> 
 
 function permutations(){
@@ -25,10 +36,32 @@ function permutations(){
             }
     
     
-    out = document.getElementById("result")
+    out = document.getElementById("result1")
     out.innerHTML = first_value+" permute "+second_value+"is"+ product;  
 }
-
+function processRadio()
+    {
+       
+        first = document.getElementById("first_value").value;
+        second = document.getElementById("second_value").value;
+        plus = document.getElementById("rg1_plus").checked
+        minus = document.getElementById("rg1_minus").checked
+        times = document.getElementById("rg1_times").checked
+        divide = document.getElementById("rg1_divide").checked
+            if (plus) {
+               out= document.getElementById("result2").innerHTML = Number(num1) + Number(num2)
+            }
+            if (minus) {
+               out= document.getElementById("result2").innerHTML = num1 - num2
+            }
+            if (times) {
+               out= document.getElementById("result2").innerHTML = num1 * num2
+            }
+            if (divide) {
+               out= document.getElementById("result2").innerHTML = num1 / num2
+            }
+            
+    }
 
 </script>
 
