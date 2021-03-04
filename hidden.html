@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>the title is things</title>
-    </head>
- 
+
+<head>
+    <title>the title is things</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12 pt-3">
+                    <h2>Hidden things by sri sathya mamidala</h2>
 
-<h2>Hidden things by sri sathya mamidala</h2>
+                    <form>
+                        <label for="form1_secret">Enter the secret word </label>
+                        <input type="password" class="form-control" id="form1_secret" name="form1_secret" min=10 max=50
+                            step=2 value=30> <br>
 
-<form>
-    <label for="form1_secret">Enter the secret word </label>
-    <input type ="password" id="form1_secret" name="form1_secret" min=10 max=50 step=2 value=30> <br>
+                        <label for="form1_guess">Enter a guess </label>
+                        <input type="text" class="form-control" id="form1_guess" name="form1_guess" autofocus> <br>
 
-    <label for="form1_guess">Enter a guess </label>
-    <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
+                        <input type="button" class="btn btn-primary" onclick="processGuess()" value="Check the guess">
+                    </form>
+                </div>
 
-    <input type="button" onclick="processGuess()" value="Check the guess">
-</form>
-
-
-<p id="result">Results</p>
-
-<script> 
-var correct=0;
-var wrong=0;
-
-function processGuess (){
-    console.log("Getting form values")
-    secret = document.getElementById("form1_secret").value
-    guess = document.getElementById("form1_guess").value
-    //confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(secret==guess){
-        correct+=1;
-        alert("Congratualtions")
-        out.innerHTML = "success attempts" + correct
-    } else {
-        wrong+=1;
-        alert("sorry")
-        out.innerHTML = "wrong attempts" + wrong
-    }
-}
-</script>
-<div class="container">
-    <img id="plants" src="abelia.jpg" width="200" height="200" onclick="rotateImage()">
-</div>
-<script>
-    var currentImage=0;
-    function rotateImage()
-    {
-switch(currentImage){
-    case 0:
-        currentImage=currentImage+1;
-        document.getElementById("plants").src= "abelia.jpg"
-        break;
-        case 1:
-        currentImage=currentImage+1;
-        document.getElementById("plants").src= "magnolia.jpg"
-        break;
-        case 2:
-        currentImage=currentImage+1;
-        document.getElementById("plants").src= "mahonia.jpg"
-        break;
-        default:
-            currentImage=0
-            document.getElementById("plants").src= "abelia.jpg"
-
-}
-    }
+                <p id="result">Results</p>
+            </div>
+        </div>
+    </div>
 
 
-</script>
+
+
+    <script>
+        var correct = 0;
+        var wrong = 0;
+
+        function processGuess() {
+            console.log("Getting form values")
+            secret = document.getElementById("form1_secret").value
+            guess = document.getElementById("form1_guess").value
+            //confirmed = confirm("Are these the values? "+age+" and "+nick)
+
+            out = document.getElementById("result")
+            if (secret == guess) {
+                correct += 1;
+                alert("Congratualtions")
+                out.innerHTML = "success attempts" + correct
+            } else {
+                wrong += 1;
+                alert("sorry")
+                out.innerHTML = "wrong attempts" + wrong
+            }
+        }
+    </script>
+    <div class="container">
+        <img id="plants" src="abelia.jpg" width="200" height="200" onclick="rotateImage()">
+    </div>
+    <script>
+        var currentImage = 0;
+
+        function rotateImage() {
+            switch (currentImage) {
+                case 0:
+                    currentImage = currentImage + 1;
+                    document.getElementById("plants").src = "abelia.jpg"
+                    break;
+                case 1:
+                    currentImage = currentImage + 1;
+                    document.getElementById("plants").src = "magnolia.jpg"
+                    break;
+                case 2:
+                    currentImage = currentImage + 1;
+                    document.getElementById("plants").src = "mahonia.jpg"
+                    break;
+                default:
+                    currentImage = 0
+                    document.getElementById("plants").src = "abelia.jpg"
+
+            }
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>

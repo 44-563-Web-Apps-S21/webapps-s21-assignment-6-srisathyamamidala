@@ -1,68 +1,85 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>the title is BEAR</title>
-    </head>
+
+<head>
+    <title>
+        bear
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12 pt-3">
+                    <h2>sathya mamidala builds a bear</h2>
 
-<h2>sri sathya mamidala builds a bear</h2>
+                    <form>
+                        <div>
+                            <label for="cb1_hat"> hat </label>
+                            <input type="checkbox" id="cb1_hat" class="form-checkbox" name="hat" value=hat>
+                            <br>
+                            <label for="cb1_scarf"> Scarf </label>
+                            <input type="checkbox" id="cb1_scarf" class="form-checkbox" name="scarf" value=scarf>
+                            <br>
+                            <label for="cb1_shirt"> Shirt</label>
+                            <input type="checkbox" id="cb1_shirt" class="form-checkbox" name="shirt" value="shirt">
+                            <br>
+                            <input type="button" onclick="startBear()" class="btn btn-primary btn-md"
+                                value="Start a bear">
+                        </div>
+                    </form>
+                    <p id="result">This text will be replaced </p>
+                    <form>
+                        <label for="cb2_property"> Enter a property </label>
+                        <input type="text" class="form-control" id="cb2_property" name="property" value="color">
+                        <br>
+                        <label for="cb2_value"> Enter a value </label>
+                        <input type="text" class="form-control" id="cb2_value" name="value">
+                        <br>
+                        <input type="button" class="btn btn-primary" onclick="updatebear()" value="Update the bear">
+                    </form>
+                    <p id="result2" class="text-danger">This text will be replaced </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<form>
-    <label for="hat">hat</label>
-    <input type="text" id="hat" name="hat" value="hat"> <br>
-    <label for="scarf">scarf</label>
-    <input type="text" id="scarf" name="scarf" value="scarf"> <br>
-    <label for="shirt">shirt</label>
-    <input type="text" id="shirt" name="shirt" value="shirt"> <br>
-    <input type="button" onclick=startbear()" value="Start a bear">  
-</form>
 
 
-<p id="result3">text</p>
-<form>
-    
-    <label for="property">Enter a property </label>
-    <input type="text" id="form1_property" name="form1_property" value=color> <br>
+    <script>
+        var my_bear;
 
-    <label for="value">Enter a value </label>
-    <input type="text" id="form1_value" name="form1_value"> <br>
-    <input type="button" onclick="updatebear()" value="Update the bear">
-</form>
-<p id="result4">text</p>
-<script> 
+        function startBear() {
 
-function startbear() {
-            my_bear = {};
-    if(document.getElementById("hat").checked){
-        my_bear("hat")=true;
-    }else{
-        my_bear("hat")=false;
-    }
-     if(document.getElementById("scarf").checked){
-        my_bear("scarf")=true;
-    }else{
-        my_bear("scarf")=false;
-    }
-    if(document.getElementById("shirt").checked){
-        my_bear("shirt")=true;
-    }else{
-        my_bear("shirt")=false;
-    }
-    
-    out =document.getElementById("result3") 
-    
-    out.innerHTML=my_bear
-    
-    
-}
-function updatebear(){
-    property = document.getElementById("property").value
-    value = document.getElementById("value").value
-    my_bear[property] = value
-    out = document.getElementById("result4")
-    out.innerHTML = my_bear
-}
-</script>
+            my_bear = "";
+
+            hat = document.getElementById("cb1_hat").checked
+            scarf = document.getElementById("cb1_scarf").checked
+            shirt = document.getElementById("cb1_shirt").checked
+            my_bear = "hat : " + hat + " " + "scarf:  " + scarf + " " + "shirt:  " + shirt;
+
+            out = document.getElementById("result")
+
+            out.innerHTML = my_bear
+        }
+
+        function updatebear() {
+            my_bear = "";
+            out = document.getElementById("result2")
+            property = document.getElementById("cb2_property").value
+            value = document.getElementById("cb2_value").value
+            my_bear = property + ":" + value;
+            out.innerHTML = my_bear
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>

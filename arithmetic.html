@@ -1,89 +1,110 @@
 <!DOCTYPE html>
 <html>
- <head>
 
-     <title>
+<head>
+    <title>
         permutation
     </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12 pt-3">
+                    <h2>sathya mamidala Computes</h2>
 
-<h2>sathya mamidala Computes</h2>
+                    <form>
+                        <label for="form1_firstvalue">Enter a number </label>
+                        <input type="number" id="form1_firstvalue" class="form-control" name="form1_firstvalue"
+                            value=10> <br>
 
-<form>
-    <label for="form1_firstvalue">Enter a number </label>
-    <input type ="number" id="form1_firstvalue" name="form1_firstvalue" value=10> <br>
+                        <label for="form1_secondvalue">Enter a number </label>
+                        <input type="number" id="form1_secondvalue" class="form-control" name="form1_secondvalue"
+                            value=2> <br>
 
-    <label for="form1_secondvalue">Enter a number </label>
-    <input type ="number" id="form1_secondvalue" name="form1_secondvalue" value=2 > <br>
+                        <input type="button" onclick="permutations()" class="btn btn-primary" value="Compute">
+                    </form>
 
-    <input type="button" onclick="permutations()" value="Compute">
-</form>
+                    <p id="result" class="text-danger">First permute Second is product </p>
+                    <form>
+                        <input type="radio" id="rg1_plus" class="form-radio" name="operation" onclick="processRadio()"
+                            value="plus"> <label for="rg1_plus">+</label>
+                        </br>
+                        <input type="radio" id="rg1_minus" class="form-radio" name="operation" onclick="processRadio()"
+                            value="minus">
+                        <label for="rg1_minus">-</label>
+                        </br>
+                        <input type="radio" id="rg1_times" class="form-radio" name="operation" onclick="processRadio()"
+                            value="times">
+                        <label for="rg1_times">*</label>
+                        </br>
+                        <input type="radio" id="rg1_divide" class="form-radio" name="operation" onclick="processRadio()"
+                            value="divide">
+                        <label for="rg1_divide">/</label>
+                        </br>
 
-<p id="result">First permute Second is product  </p>
-<form>
-<input type="radio" id="rg1_plus" name="operation"  onclick="processRadio()" value="plus"> <label for="rg1_plus">+</label>
-</br>    
-<input type="radio" id="rg1_minus" name="operation" onclick="processRadio()" value="minus"> <label for="rg1_minus">-</label>
-</br>
-<input type="radio" id="rg1_times" name="operation" onclick="processRadio()" value="times"> <label for="rg1_times">*</label>
-</br>
-<input type="radio" id="rg1_divide" name="operation" onclick="processRadio()" value="divide"> <label for="rg1_divide">/</label>
-</br>    
+                    </form>
+                    <p class="text-info" id="arithmetic">The text will be displayed on the screen by checking result
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</form>
+    <script>
+        function permutations() {
+            var zx = document.getElementById("form1_firstvalue").value;
+            var as = document.getElementById("form1_secondvalue").value;
+            var product = 1;
+            var q = zx;
+            out = document.getElementById("result")
+            for (var i = zx - 1; i > 0; i--) {
+                zx = zx * i;
+            }
+            var op = q - as;
+            for (j = op - 1; j > 0; j--) {
+                op = op * j;
+            }
+            product = zx / op;
+            console.log(product);
+            out.innerHTML = q + " permute " + as + " should be " + product;
 
-
-
-<p id="arithmetic">The text will be displayed on the screen by checking result </p>
-
-<script> 
-
-function permutations(){
-    var zx = document.getElementById("form1_firstvalue").value;
-        var as = document.getElementById("form1_secondvalue").value;
-        var product = 1;
-        var q = zx;
-        out = document.getElementById("result")
-        for (var i = zx-1; i > 0; i--) {
-            zx = zx * i;
         }
-        var op = q - as;
-        for (j = op-1 ; j > 0; j--) {
-            op = op * j;
-        }
-        product = zx / op;
-        console.log(product);
-        out.innerHTML = q + " permute " + as + " should be " + product;
-    
-}
-</script>
+    </script>
 
 
-<script>
-    function processRadio() {
-        let first = document.getElementById("form1_firstvalue").value;
-        let second = document.getElementById("form1_secondvalue").value;
-        plus = document.getElementById("rg1_plus").checked
-        minus = document.getElementById("rg1_minus").checked
-        times = document.getElementById("rg1_times").checked
-        divide = document.getElementById("rg1_divide").checked
-       
-        if (plus) {
-            document.getElementById("arithmetic").innerHTML = (Number)(first) + (Number)(second)
+    <script>
+        function processRadio() {
+            let first = document.getElementById("form1_firstvalue").value;
+            let second = document.getElementById("form1_secondvalue").value;
+            plus = document.getElementById("rg1_plus").checked
+            minus = document.getElementById("rg1_minus").checked
+            times = document.getElementById("rg1_times").checked
+            divide = document.getElementById("rg1_divide").checked
+
+            if (plus) {
+                document.getElementById("arithmetic").innerHTML = (Number)(first) + (Number)(second)
+            }
+            if (minus) {
+                document.getElementById("arithmetic").innerHTML = first - second
+            }
+            if (times) {
+                document.getElementById("arithmetic").innerHTML = first * second
+            }
+            if (divide) {
+                document.getElementById("arithmetic").innerHTML = first / second
+            }
         }
-        if (minus) {
-            document.getElementById("arithmetic").innerHTML = first - second
-        }
-        if (times) {
-            document.getElementById("arithmetic").innerHTML = first * second
-        }
-        if (divide) {
-            document.getElementById("arithmetic").innerHTML = first / second
-        }
-    }
-</script>
+    </script>
 
 
 </body>
-</html> 
+
+</html>
