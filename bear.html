@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>the title is BEAR</title>
+    </head>
+<body>
+
+<h2>sri sathya mamidala builds a bear</h2>
+
+<form>
+    <label for="hat">hat</label>
+    <input type="text" id="hat" name="hat" value="hat"> <br>
+    <label for="scarf">scarf</label>
+    <input type="text" id="scarf" name="scarf" value="scarf"> <br>
+    <label for="shirt">shirt</label>
+    <input type="text" id="shirt" name="shirt" value="shirt"> <br>
+    <input type="button" onclick=startbear()" value="Start a bear">  
+</form>
+
+<p id="result3">text</p>
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+function startbear() {
+            my_bear = {};
+    if(document.getElementById("hat").checked){
+        my_bear("hat")=true;
+    }else{
+        my_bear("hat")=false;
+    }
+     if(document.getElementById("scarf").checked){
+        my_bear("scarf")=true;
+    }else{
+        my_bear("scarf")=false;
+    }
+    if(document.getElementById("shirt").checked){
+        my_bear("shirt")=true;
+    }else{
+        my_bear("shirt")=false;
+    }
+    
+    out =document.getElementById("result3") 
+    
+    out.innerHTML=my_bear
+    
+    
+}
+</script>
+
+</body>
+</html> 
